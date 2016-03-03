@@ -50,16 +50,15 @@
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save"
                                                          style:UIAlertActionStyleDefault
                                                        handler: ^(UIAlertAction *_Nonnull action) {
-                                                           [self.dreamList addObject:alertController.textFields.firstObject.text];
-                                                           [self.descriptions addObject:alertController.textFields.lastObject.text];
-                                                           [self.tableView reloadData];
-                                                       }];
+        [self.dreamList addObject:alertController.textFields.firstObject.text];
+        [self.descriptions addObject:alertController.textFields.lastObject.text];
+        [self.tableView reloadData];
+    }];
 
-    [alertController addAction: cancelAction];
-    [alertController addAction: saveAction];
+    [alertController addAction:cancelAction];
+    [alertController addAction:saveAction];
 
     [self presentViewController:alertController animated:YES completion:nil];
-
 }
 
 - (NSInteger)   tableView:(UITableView *) tableView
@@ -77,12 +76,20 @@
     return cell;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue
-                sender:(id)sender {
+- (void) prepareForSegue:(UIStoryboardSegue *) segue
+                  sender:(id) sender {
     DetailViewController *detailViewController = (DetailViewController *)segue.destinationViewController;
-    UITableViewCell *cell = (UITableViewCell *) sender;
+    UITableViewCell *cell = (UITableViewCell *)sender;
     detailViewController.titleString = cell.textLabel.text;
     detailViewController.descriptionString = cell.detailTextLabel.text;
+}
+
+- (void)     tableView:(UITableView *) tableView
+    commitEditingStyle:(UITableViewCellEditingStyle) editingStyle
+     forRowAtIndexPath:(NSIndexPath *) indexPath {
+    [self.dreamList removeObjectAtIndex:indexPath.row];
+    [self.descriptions removeObjectAtIndex:indexPath.row];
+    [self.tableView reloadData];
 }
 
 @end
