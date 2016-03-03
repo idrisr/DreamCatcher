@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "DetailViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSMutableArray *dreamList;
+@property NSMutableArray *descriptions;
 @end
 
 @implementation ViewController
@@ -18,6 +20,7 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     self.dreamList = [NSMutableArray new];
+    self.descriptions = [NSMutableArray new];
 }
 
 - (IBAction) onAddButtonPressed:(UIBarButtonItem *) sender {
@@ -36,6 +39,10 @@
         textField.placeholder = @"Dream Title";
     }];
 
+    [alertController addTextFieldWithConfigurationHandler: ^(UITextField *_Nonnull textField) {
+        textField.placeholder = @"Dream Description";
+    }];
+
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                            style:UIAlertActionStyleCancel
                                                          handler:nil];
@@ -43,8 +50,8 @@
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save"
                                                          style:UIAlertActionStyleDefault
                                                        handler: ^(UIAlertAction *_Nonnull action) {
-                                                           UITextField *textField = alertController.textFields.firstObject;
-                                                           [self.dreamList addObject:textField.text];
+                                                           [self.dreamList addObject:alertController.textFields.firstObject.text];
+                                                           [self.descriptions addObject:alertController.textFields.lastObject.text];
                                                            [self.tableView reloadData];
                                                        }];
 
@@ -66,7 +73,16 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
 
     cell.textLabel.text = self.dreamList[indexPath.row];
+    cell.detailTextLabel.text = self.descriptions[indexPath.row];
     return cell;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue
+                sender:(id)sender {
+    DetailViewController *detailViewController = (DetailViewController *)segue.destinationViewController;
+    UITableViewCell *cell = (UITableViewCell *) sender;
+    detailViewController.titleString = cell.textLabel.text;
+    detailViewController.descriptionString = cell.detailTextLabel.text;
 }
 
 @end

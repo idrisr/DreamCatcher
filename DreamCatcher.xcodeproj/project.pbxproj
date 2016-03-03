@@ -13,6 +13,7 @@
 		68C48E6F1C87FD8400F75C6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C48E6D1C87FD8400F75C6C /* Main.storyboard */; };
 		68C48E711C87FD8400F75C6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C48E701C87FD8400F75C6C /* Assets.xcassets */; };
 		68C48E741C87FD8400F75C6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C48E721C87FD8400F75C6C /* LaunchScreen.storyboard */; };
+		68C48E801C88114400F75C6C /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C48E7F1C88114400F75C6C /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		68C48E701C87FD8400F75C6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68C48E731C87FD8400F75C6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68C48E751C87FD8400F75C6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68C48E7E1C88114400F75C6C /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		68C48E7F1C88114400F75C6C /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,8 @@
 		68C48E581C87FD8400F75C6C = {
 			isa = PBXGroup;
 			children = (
+				68C48E7E1C88114400F75C6C /* DetailViewController.h */,
+				68C48E7F1C88114400F75C6C /* DetailViewController.m */,
 				68C48E631C87FD8400F75C6C /* DreamCatcher */,
 				68C48E621C87FD8400F75C6C /* Products */,
 			);
@@ -152,6 +157,7 @@
 				68C48E6C1C87FD8400F75C6C /* ViewController.m in Sources */,
 				68C48E691C87FD8400F75C6C /* AppDelegate.m in Sources */,
 				68C48E661C87FD8400F75C6C /* main.m in Sources */,
+				68C48E801C88114400F75C6C /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
